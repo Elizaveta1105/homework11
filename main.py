@@ -80,7 +80,7 @@ class Record:
         delta_days = None
 
         if self.birthday:
-            day, month, year = [int(i) for i in self.birthday.split('.')]
+            day, month, _ = [int(i) for i in self.birthday.split('.')]
 
             current_date = date.today()
             current_year_birthday = datetime(
