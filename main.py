@@ -118,23 +118,10 @@ class AddressBook(UserDict):
         self.data.pop(name, None)
 
     def iterator(self, records_num):
+        list_book_values = list(self.data.values())
         counter = 0
-        while counter <= records_num:
-            yield list(self.data.values())[counter]
-            counter += 1
+        records = records_num if len(list_book_values) >= records_num else len(list_book_values)
 
-#
-# book = AddressBook()
-#
-# # Створення запису для John
-# book.add_record(Record("John1"))
-# book.add_record(Record("John2"))
-# book.add_record(Record("John3"))
-# book.add_record(Record("John4"))
-# book.add_record(Record("John5"))
-# book.add_record(Record("John6"))
-# book.add_record(Record("John7"))
-# book.add_record(Record("John9"))
-#
-# for i in book.iterator(10):
-#     print(i)
+        while counter < records:
+            yield list_book_values[counter]
+            counter += 1
