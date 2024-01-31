@@ -118,28 +118,9 @@ class AddressBook(UserDict):
         list_book_values = list(self.data.values())
         counter = 0
         records = records_num if len(list_book_values) >= records_num else len(list_book_values)
+        updated_records = records
 
-        while counter < records:
-            yield list_book_values[counter]
-            counter += 1
-
-# book = AddressBook()
-# j = Record("Toha", "06.02.1990")
-# print(j.days_to_birthday())
-#
-# book.add_record(Record("Jon"))
-# book.add_record(Record("Jon1"))
-# book.add_record(Record("Jon2"))
-# book.add_record(Record("Jon3"))
-# book.add_record(Record("Jon4"))
-# book.add_record(Record("Jon5"))
-# book.add_record(Record("Jon6"))
-# book.add_record(Record("Jon7"))
-# book.add_record(Record("Jon8"))
-#
-#
-# for i in book.iterator(11):
-#     print(i)
-
-j = Record("Toha")
-print(j.days_to_birthday())
+        while counter < len(list_book_values):
+            yield [str(record) for record in list_book_values[counter:updated_records]]
+            counter += records
+            updated_records += records
