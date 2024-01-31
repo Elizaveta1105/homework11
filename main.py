@@ -39,11 +39,7 @@ class Phone(Field):
 class Birthday(Field):
 
     def is_valid(self, value):
-        if len(value.split('.')) >= 3:
-            day, month, year = [int(i) for i in value.split('.')]
-            if 1950 < year < 2014 and 0 < month < 13 and 0 < day < 32:
-                return True
-        return False
+        return True if bool(datetime.strptime(value, "%d.%m.%Y")) else False
 
 
 class Record:
@@ -126,3 +122,24 @@ class AddressBook(UserDict):
         while counter < records:
             yield list_book_values[counter]
             counter += 1
+
+# book = AddressBook()
+# j = Record("Toha", "06.02.1990")
+# print(j.days_to_birthday())
+#
+# book.add_record(Record("Jon"))
+# book.add_record(Record("Jon1"))
+# book.add_record(Record("Jon2"))
+# book.add_record(Record("Jon3"))
+# book.add_record(Record("Jon4"))
+# book.add_record(Record("Jon5"))
+# book.add_record(Record("Jon6"))
+# book.add_record(Record("Jon7"))
+# book.add_record(Record("Jon8"))
+#
+#
+# for i in book.iterator(11):
+#     print(i)
+
+j = Record("Toha")
+print(j.days_to_birthday())
